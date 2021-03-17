@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Header from "./Headerjs";
 import TodoList from "./TodoList";
 import SubmitForm from "./SubmitForm";
@@ -6,8 +6,16 @@ import './App.css';
 import 'bulma/css/bulma.css';
 
 function App () {
-    const [tasks, setTask] = useState(['task 1', 'task 2', 'task 3']);
+
+    const [tasks, setTask] = useState([]);
     const [color, setColor] = useState(false);
+    useEffect(()=>{
+        fetch('https://jsonplaceholder.typicode.com/todos/?_limit=5')
+            .then(response => response.json())
+            .then(task =>{
+                setTask(task)
+            })
+    },[])
 
     function handleChangeColor () {
        setColor(!color);
