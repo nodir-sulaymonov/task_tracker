@@ -3,7 +3,7 @@ form {
   padding: 10px;
 }
 .wrapper {
-  min-height: 80vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,7 +36,7 @@ form {
 }
 
 .list-item {
-  padding: 2px;
+  padding: 5px 2px;
   cursor: pointer;
 }
 
@@ -51,13 +51,43 @@ button.delete {
 .settings-component{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width: 40vw;
   border: 1px solid #dbdbdb;
   padding: 10px;
   text-align: right;
   margin-bottom: 5px;
+  background-color: #FFFFFF;
 }
 
 .settings-component span {
   margin-right: 10px;
+}
+.change_button {
+  padding: 15px;
+  background-color: #809fff;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-radius: 6px;
+}
+
+.change_button:hover {
+  background-color: #4d79ff;
+}
+
+.submit_button {
+  padding: 5px 25px;
+  border: none;
+  cursor: pointer;
+  background-color: forestgreen;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+.submit_button:hover {
+  background-color: #2F4F4F;
 }

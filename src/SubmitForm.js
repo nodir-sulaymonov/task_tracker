@@ -1,13 +1,13 @@
 import React, {useState} from "react";
-
+import './App.css';
 function SubmitForm ({onFormSubmit}) {
-    const [task, setTask] = useState('');
+    const [value, setValue] = useState('');
 
     function handleSubmit (e) {
         e.preventDefault();
-        if (task === '') return;
-        onFormSubmit(task);
-        setTask('');
+        if (value === '') return;
+        onFormSubmit(value);
+        setValue('');
     }
 
     return (
@@ -16,10 +16,10 @@ function SubmitForm ({onFormSubmit}) {
                 type='text'
                 className='input'
                 placeholder='Enter Item'
-                value={task}
-                onChange={e => setTask(e.target.value) }
+                value={value}
+                onChange={e => setValue(e.target.value) }
             />
-            <button className='button'>Submit</button>
+            <button type='submit' className='submit_button'>Submit</button>
         </form>
     );
 }

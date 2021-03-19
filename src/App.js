@@ -4,6 +4,7 @@ import TodoList from "./TodoList";
 import SubmitForm from "./SubmitForm";
 import './App.css';
 import 'bulma/css/bulma.css';
+import Context from "./context";
 
 function App () {
 
@@ -16,42 +17,50 @@ function App () {
                 setTask(task)
             })
     },[])
-
     function handleChangeColor () {
        setColor(!color);
     }
 
-    function handleSubmit (event) {
-        setTask(prevState => [...prevState, event])
+    function handleSubmit (title) {
+        setTask(
+            tasks.concat([
+                {
+                    title,
+                    id: Date.now(),
+                    completed: false
+                }
+            ])
+        )
     }
 
-    function handleDelete(index) {
-        const newArr = [...tasks];
-        newArr.splice(index, 1);
-        setTask(newArr);
+    function handleDelete(id) {
+        console.log(id)
+        setTask(tasks.filter(todo => todo.id !== id))
     }
 
     return (
-        <div className={`wrapper ${color ? 'dark' : 'white'}`}>
-            <Settings toggleColor={handleChangeColor}/>
-            <div className='card frame'>
-                <Header
-                    numTodos={tasks.length}
-                />
-                <TodoList
-                    tasks={tasks}
-                    onDelete={handleDelete}
-                />
-                <SubmitForm onFormSubmit={handleSubmit}/>
+        <Context.Provider value={{handleDelete}}>
+            <div className={`wrapper ${color ? 'dark' : 'white'}`}>
+                <Settings toggleColor={handleChangeColor}/>
+                <div className='card frame'>
+                    <Header
+                        numTodos={tasks.length}
+                    />
+                    <TodoList
+                        tasks={tasks}
+                        onDelete={handleDelete}
+                    />
+                    <SubmitForm onFormSubmit={handleSubmit}/>
+                </div>
             </div>
-        </div>
+        </Context.Provider>
     );
 }
 export default App;
 
 const Settings = ({toggleColor}) => {
     return <div className='settings-component'>
-        <span>Settings:</span>
-        <button onClick={toggleColor} className='button'>change background color</button>
+        <strong>Settings:</strong>
+        <button onClick={toggleColor} className='change_button'>change background color</button>
     </div>;
 };

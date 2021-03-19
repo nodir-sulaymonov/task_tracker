@@ -1,15 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
+import Context from "./context";
 import './App.css';
 const Todo = (props) => {
+    const { handleDelete } = useContext(Context)
     const titleItem = props.todo.title;
     return (
         <li className='list-item'>
             <strong>{props.index + 1}</strong>
             &nbsp;
-            {titleItem.charAt(0).toUpperCase() + titleItem.slice(1)}
+            {titleItem}
             <button
                 className="delete is-pulled-right"
-                onClick={() => {props.onDelete(props.id)}}>
+                onClick={() => {handleDelete(props.todo.id)}}>
             </button>
         </li>
     );
