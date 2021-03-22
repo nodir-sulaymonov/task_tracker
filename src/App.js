@@ -61,6 +61,6 @@ export default App;
 const Settings = ({toggleColor}) => {
     return <div className='settings-component'>
         <strong>Settings:</strong>
-        <button onClick={toggleColor} className='change_button'>change background color</button>
+        <button onClick={toggleColor} className='change_button'>Change background </button>
     </div>;
 };

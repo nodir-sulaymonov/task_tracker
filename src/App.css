@@ -28,11 +28,24 @@ form {
 }
 
 .dark{
-  background: #909090;
+  background-image: linear-gradient(
+          to right bottom,
+          rgba(139, 204, 207, 0.2),
+          rgba(40, 168, 180, 0.5)),
+  url(./img/nat-7.jpg);
+
+  background-size: cover;
+  background-position: center;
 }
 
 .white{
-  background: #FFFFFF;
+  background-image: linear-gradient(
+          to right bottom,
+          rgba(139, 204, 207, 0.2),
+          rgba(40, 168, 180, 0.5)),
+  url(./img/nat-6.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .list-item {
